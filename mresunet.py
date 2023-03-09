@@ -1,17 +1,8 @@
 # -*- coding: utf-8 -*-
 import torch
-
 import pytorch_lightning as pl
 import torch.nn as nn
 import torch.nn.functional as F
-
-
-
-
-
-
-
-
 
 
 class L1LossFlat(nn.SmoothL1Loss):
@@ -199,8 +190,11 @@ class DecodingBox(nn.Module):
 
     def forward(self, x, d4=None, d2=None):
         # Perform upsampling
+        print(x.shape)
         x = self.upsample(x)
-
+        print(x.shape)
+        print(d4.shape)
+        print(d2.shape)
         x = self.sub_stages[0](x, d4)
         x = self.sub_stages[1](x)
         x = self.sub_stages[2](x, d2)
