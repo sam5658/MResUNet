@@ -219,7 +219,7 @@ class MResUNet(pl.LightningModule):
         input_channels=1,
         nb_enc_boxes=4,
         nb_channels_first_box=64,
-        output_type="kappa_map",
+        output_type="mass",
         loss="mse",
         final_channels=1,
         final_relu=False,
