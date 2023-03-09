@@ -137,7 +137,9 @@ class EncodingBox(nn.Module):
 
     def forward(self, x):
         x = self.sub_stages[0](x)
+        print(x.shape , "encoding ") 
         d2 = self.sub_stages[1](x)
+        print(d2.shape)
         x = self.sub_stages[2](d2)
         x = self.sub_stages[3](x)
 
@@ -366,9 +368,6 @@ class MResUNet(pl.LightningModule):
         for i, box in enumerate(self.decoding):
             x = box(
                 x,
-                print(d4.shape)
-                print("d2")
-                print(d2.shape)
                 d4=d4_list[self.nb_enc_boxes - 2 - i],
                 d2=d2_list[self.nb_enc_boxes - 2 - i],
             )
