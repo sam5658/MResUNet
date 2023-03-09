@@ -202,7 +202,8 @@ class DecodingBox(nn.Module):
         x = self.sub_stages[1](x)
         x = self.sub_stages[2](x, d2)
         x = self.sub_stages[3](x)
-
+        print(x.shape)
+        print()
         return x
 
 
@@ -374,6 +375,7 @@ class MResUNet(pl.LightningModule):
 
         if ["mass"] == self.output_type:
             mass = self.final_layers(x)
+            print(mass.shape , "..")
             return mass.view((mass.shape[0], 1, 1, 1))
 
         return x
