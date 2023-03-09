@@ -366,6 +366,7 @@ class MResUNet(pl.LightningModule):
             
         # Decoding
         x = self.reduce_channel(x)
+        print("fv")
         for i, box in enumerate(self.decoding):
             x = box(
                 x,
