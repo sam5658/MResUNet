@@ -190,10 +190,10 @@ class DecodingBox(nn.Module):
 
     def forward(self, x, d4=None, d2=None):
         # Perform upsampling
-        print(x.shape)
+        print(x.shape , "x")
         x = self.upsample(x)
         print(x.shape)
-        print(d4.shape)
+        print(d4.shape , "d")
         print(d2.shape)
         x = self.sub_stages[0](x, d4)
         x = self.sub_stages[1](x)
