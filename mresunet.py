@@ -96,8 +96,7 @@ class DecodingBoxSubStage(EncodingBoxSubStage):
         x = self.dropout(x)
 
         if self.concatenate:
-            print(concat_with)
-            print(concat_with[0])
+            print(concat_with.shape)
             print(x.shape)
             x = torch.cat((concat_with, x), 1)
 
