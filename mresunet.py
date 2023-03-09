@@ -310,8 +310,7 @@ class MResUNet(pl.LightningModule):
             padding=1,
         )
 
-        if ["mass"] == self.output_type:
-            self.final_layers = nn.Sequential(
+        self.final_layers = nn.Sequential(
                 *[
                     nn.Flatten(),
                     nn.BatchNorm1d(
