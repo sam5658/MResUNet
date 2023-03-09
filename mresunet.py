@@ -87,10 +87,10 @@ class DecodingBoxSubStage(EncodingBoxSubStage):
         x = self.dropout(x)
 
         if self.concatenate:
-            print(concat_with.shape)
-            print(x.shape)
+            print(concat_with.shape , "c")
+            print(x.shape , "x")
             x = torch.cat((concat_with, x), 1)
-
+            print(x.shape)
         y = self.conv(x)
         y = self.activation_function(y)
         y = self.batch_norm(y)
@@ -98,7 +98,7 @@ class DecodingBoxSubStage(EncodingBoxSubStage):
         # Addition (Residual connection)
         if self.conv.stride == 1:
             return x + y
-
+        print(y.shape , "y" )
         return y
 
 
