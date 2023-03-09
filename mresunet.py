@@ -373,7 +373,7 @@ class MResUNet(pl.LightningModule):
                 d2=d2_list[self.nb_enc_boxes - 2 - i],
             )
           
-        
+        print("hgfgdg")
         mass = self.final_layers(x)
         print(mass.shape , "sdgf")
         return mass.view((mass.shape[0], 1, 1, 1))
