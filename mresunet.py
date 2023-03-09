@@ -196,6 +196,7 @@ class DecodingBox(nn.Module):
         print(d4.shape , "d")
         print(d2.shape)
         x = self.sub_stages[0](x, d4)
+        print("d4")
         x = self.sub_stages[1](x)
         x = self.sub_stages[2](x, d2)
         x = self.sub_stages[3](x)
@@ -359,12 +360,15 @@ class MResUNet(pl.LightningModule):
             x, d = box(x)
             d4_list.append(torch.clone(x))
             d2_list.append(torch.clone(d))
-
+            
         # Decoding
         x = self.reduce_channel(x)
         for i, box in enumerate(self.decoding):
             x = box(
                 x,
+                print(d4.shape)
+                print("d2")
+                print(d2.shape)
                 d4=d4_list[self.nb_enc_boxes - 2 - i],
                 d2=d2_list[self.nb_enc_boxes - 2 - i],
             )
