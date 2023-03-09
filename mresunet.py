@@ -375,7 +375,7 @@ class MResUNet(pl.LightningModule):
 
         if ["mass"] == self.output_type:
             mass = self.final_layers(x)
-            print(mass.shape , "..")
+            print(mass.shape , "sdgf")
             return mass.view((mass.shape[0], 1, 1, 1))
 
         return x
